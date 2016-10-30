@@ -1,1 +1,1 @@
-<h1>TEST <?= hellow_world ?></h1>
+<h1>TEST <?php echo $hellow_world ?></h1>
