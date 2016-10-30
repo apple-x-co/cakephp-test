@@ -12,7 +12,15 @@ use App\Controller\AppController;
 
 class HelloController extends AppController {
 
-    public function index() {
+    public function initialize()
+    {
+
+        $this->viewBuilder()->layout('hello');
+
+    }
+
+    public function index()
+    {
 
         $this->set('hellow_world', 'HELLO');
 
