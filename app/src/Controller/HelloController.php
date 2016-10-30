@@ -6,6 +6,8 @@
  * Time: 18:09
  */
 
+namespace App\Controller;
+
 use App\Controller\AppController;
 
 class HelloController extends AppController {
