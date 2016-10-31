@@ -23,6 +23,8 @@ class HelloFormController extends  AppController {
             else {
                 $this->Flash->error('ERROR!!');
             }
+
+            $this->render('confirm');
         }
 
         $this->set('hello_form', $hello_form);
