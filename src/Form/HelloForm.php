@@ -12,7 +12,7 @@ use Cake\Form\Form;
 use Cake\Form\Schema;
 use Cake\Validation\Validator;
 
-class HelloForm extends  Form
+class HelloForm extends Form
 {
     protected function _buildSchema(Schema $schema)
     {
