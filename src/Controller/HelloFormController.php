@@ -8,8 +8,6 @@
 
 namespace App\Controller;
 
-use App\Controller\AppController;
-use App\Controller\AppController;
 use App\Form\HelloForm;
 
 class HelloFormController extends  AppController {
