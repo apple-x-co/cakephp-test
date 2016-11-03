@@ -24,7 +24,7 @@ abstract class SimpleFormController extends AppController {
     public function index() {
 
 
-        print_r($this->request->params);
+        print_r($this->request->param('__mode'));
 
         $mode = $this->request->param('__mode');
         if (!array_key_exists('__mode', $this->request->params)) {
