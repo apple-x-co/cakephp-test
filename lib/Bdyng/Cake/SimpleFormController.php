@@ -131,5 +131,7 @@ abstract class SimpleFormController extends AppController {
     public function register($form) {
         return $this::RETURN_CONTINUE;
     }
+    public function complete() {
+    }
 
 }
