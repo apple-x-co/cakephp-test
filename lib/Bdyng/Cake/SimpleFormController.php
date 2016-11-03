@@ -22,13 +22,6 @@ abstract class SimpleFormController extends AppController {
     abstract protected function createForm();
 
     public function index() {
-
-//
-//        print_r($this->request->data('__confirm'));
-//        print_r($this->request->data('name'));
-//        print_r($this->request->data);
-//        print_r(array_key_exists('__confirm', $this->request->data));
-
         $mode = $this->request->param('__mode');
         if (!array_key_exists('__mode', $this->request->data)) {
             if (array_key_exists('__confirm', $this->request->data)) {
