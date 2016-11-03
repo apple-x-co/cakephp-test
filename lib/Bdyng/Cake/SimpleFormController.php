@@ -11,54 +11,118 @@ use App\Controller\AppController;
 
 abstract class SimpleFormController extends AppController {
 
+    const MODE_INPUT = 'input';
+    const MODE_CONFIRM = 'confirm';
+    const MODE_REGISTER = 'register';
+    const RETURN_CONTINUE = '__continue';
+
     public $form = null;
+    private $mode = null;
 
     abstract protected function createForm();
 
     public function index() {
-
-//        $hello_form = new HelloForm();
-//
-//        if ($this->request->is('post')) {
-//            if ($hello_form->execute($this->request->data)) {
-//                $this->Flash->success('NOW!!');
-//            }
-//            else {
-//                $this->Flash->error('ERROR!!');
-//            }
-//
-//            $this->render('confirm');
-//        }
-//
-//        $this->set('hello_form', $hello_form);
+        $mode = $this->request->param('__mode');
+        if (strlen($mode) === 0) {
+            if (strlen($this->request->param('__confirm'))) {
+                $mode = self::MODE_CONFIRM;
+            }
+            elseif (strlen($this->request->param('__register'))) {
+                $mode = self::MODE_REGISTER;
+            }
+            else {
+                $mode = self::MODE_INPUT;
+            }
+        }
+        elseif ($mode !== self::MODE_INPUT &&
+                $mode !== self::MODE_CONFIRM &&
+                $mode !== self::MODE_REGISTER) {
+            $mode = self::MODE_INPUT;
+        }
 
         $form = $this->createForm();
-        $this->set('form', $form);
+        $this->prepareForm($form, $mode);
+
+        $form_name = $this->getFormName();
+        $this->set($form_name, $form);
+
+        $return_val = $this->prepare($form);
+        if ($return_val !== self::RETURN_CONTINUE) {
+            $this->render($return_val);
+            return;
+        }
+
+        if ($mode === self::MODE_CONFIRM ||
+            $mode === self::MODE_REGISTER) {
+            $return_val = $this->verifyRequestContext($form);
+            if ($return_val !== self::RETURN_CONTINUE) {
+                $this->render($return_val);
+                return;
+            }
+
+            if ($form->execute($this->request->data) &&
+                $this->validate($form)) {
+
+                if ($mode === self::MODE_CONFIRM) {
+                    $return_val = $this->prepareConfirm($form);
+                    if ($return_val !== self::RETURN_CONTINUE) {
+                        $this->render($return_val);
+                        return;
+                    }
+                    $this->render(self::MODE_CONFIRM);
+                    return;
+                }
+
+                $return_val = $this->register($form);
+                if ($return_val !== self::RETURN_CONTINUE) {
+                    $this->render($return_val);
+                    return;
+                }
+                $this->render(self::MODE_REGISTER);
+            }
+        }
+        elseif ($mode === self::MODE_INPUT &&
+                $this->request->method() === 'GET') {
+            $return_val = $this->initForm($form);
+            if ($return_val !== self::RETURN_CONTINUE) {
+                $this->render($return_val);
+                return;
+            }
+        }
+
+        $return_val = $this->prepareInput($form);
+        if ($return_val !== self::RETURN_CONTINUE) {
+            $this->render($return_val);
+            return;
+        }
     }
 
-    public function prepareForm($form) {
+    public function getFormName() {
+        return 'form';
+    }
+    public function prepareForm($form, $mode) {
 
     }
     public function initForm($form) {
-
+        return $this::RETURN_CONTINUE;
     }
     public function prepare($form) {
-
+        return $this::RETURN_CONTINUE;
     }
     public function prepareInput($form) {
-
+        return $this::RETURN_CONTINUE;
     }
-    public function input($form) {
-
+    public function verifyRequestContext($form) {
+        return $this::RETURN_CONTINUE;
+    }
+    public function validate($form) {
+        return $this::RETURN_CONTINUE;
     }
     public function prepareConfirm($form) {
-
-    }
-    public function confirm($form) {
-
+        return $this::RETURN_CONTINUE;
     }
     public function register($form) {
-
+        return $this::RETURN_CONTINUE;
     }
 
 }
