@@ -14,7 +14,7 @@ abstract class SimpleFormController extends AppController {
     const MODE_INPUT = 'input';
     const MODE_CONFIRM = 'confirm';
     const MODE_REGISTER = 'register';
-    const TEMPLATE_INPUT = 'input';
+    const TEMPLATE_INDEX = 'index';
     const TEMPLATE_CONFIRM = 'comfirm';
     const TEMPLATE_COMPLETE = 'complete';
     const RETURN_CONTINUE = '__continue';
@@ -101,7 +101,7 @@ abstract class SimpleFormController extends AppController {
             return;
         }
 
-        $this->render(self::TEMPLATE_INPUT);
+        $this->render(self::TEMPLATE_INDEX);
     }
 
     public function getFormName() {
