@@ -17,6 +17,10 @@ class HelloFormController extends SimpleFormController {
         return new HelloForm();
     }
 
+    public function register($form) {
+        $this->redirect(['action' => 'complete']);
+    }
+
 }
 
 //namespace App\Controller;
