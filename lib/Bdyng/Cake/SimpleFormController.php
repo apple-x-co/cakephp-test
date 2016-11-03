@@ -32,7 +32,7 @@ abstract class SimpleFormController extends AppController {
 //
 //        $this->set('hello_form', $hello_form);
 
-        $form = self::createForm($this);
+        $form = $this->createForm();
     }
 
     public function prepareForm($context, $form) {
