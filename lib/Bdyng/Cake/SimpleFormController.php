@@ -24,10 +24,10 @@ abstract class SimpleFormController extends AppController {
     public function index() {
         $mode = $this->request->param('__mode');
         if (strlen($mode) === 0) {
-            if (strlen($this->request->param('__confirm'))) {
+            if (!is_null($this->request->param('__confirm'))) {
                 $mode = self::MODE_CONFIRM;
             }
-            elseif (strlen($this->request->param('__register'))) {
+            elseif (!is_null($this->request->param('__register'))) {
                 $mode = self::MODE_REGISTER;
             }
             else {
@@ -82,7 +82,7 @@ abstract class SimpleFormController extends AppController {
             }
         }
         elseif ($mode === self::MODE_INPUT &&
-                $this->request->method() === 'GET') {
+                $this->request->is('get')) {
             $return_val = $this->initForm($form);
             if ($return_val !== self::RETURN_CONTINUE) {
                 $this->render($return_val);
