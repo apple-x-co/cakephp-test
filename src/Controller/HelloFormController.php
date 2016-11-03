@@ -8,7 +8,7 @@
 
 namespace App\Controller;
 
-use Bdyng\Cake;
+use Bdyng\Cake\SimpleFormController;
 use App\Form\HelloForm;
 
 class HelloFormController extends SimpleFormController {
