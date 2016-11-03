@@ -7,7 +7,7 @@
  */
 namespace Bdyng\Cake;
 
-use App\Controller;
+use App\Controller\AppController;
 
 abstract class SimpleFormController extends AppController {
 
