@@ -22,6 +22,9 @@ abstract class SimpleFormController extends AppController {
     abstract protected function createForm();
 
     public function index() {
+
+        $this->Flash->success($this->request->params['__mode']);
+
         $mode = $this->request->param('__mode');
         if (!array_key_exists('__mode', $this->request->params)) {
             if (array_key_exists('__confirm', $this->request->params)) {
