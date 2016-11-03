@@ -25,6 +25,7 @@ abstract class SimpleFormController extends AppController {
 
 
         print_r($this->request->data('__confirm'));
+        print_r($this->request->data('name'));
 
         $mode = $this->request->param('__mode');
         if (!array_key_exists('__mode', $this->request->params)) {
