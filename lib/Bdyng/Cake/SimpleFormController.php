@@ -129,6 +129,7 @@ abstract class SimpleFormController extends AppController {
         return $this::RETURN_CONTINUE;
     }
     public function register($form) {
+        $this->redirect(['action' => 'complete']);
         return $this::RETURN_CONTINUE;
     }
     public function complete() {
