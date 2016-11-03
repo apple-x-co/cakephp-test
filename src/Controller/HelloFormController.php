@@ -20,7 +20,7 @@ class HelloFormController extends SimpleFormController {
     public function register($form) {
         $this->redirect(['action' => 'complete']);
 
-        return $this->RETURN_CONTINUE;
+        return $this::RETURN_CONTINUE;
     }
 
 }
