@@ -23,7 +23,7 @@ abstract class SimpleFormController extends AppController {
 
     public function index() {
         $mode = $this->request->param('__mode');
-        if (strlen($mode) === 0) {
+        if (!array_key_exists('__mode', $this->request->params)) {
             if (array_key_exists('__confirm', $this->request->params)) {
                 $mode = self::MODE_CONFIRM;
             }
