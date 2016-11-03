@@ -1,7 +1,7 @@
 <?php
 
 echo $this->Form->create($form);
-echo '名前：' . $this->request->data['value'];
+echo '名前：' . $this->request->data['name'];
 echo 'メール：' . $this->request->data['email'];
 echo $this->Form->hidden('name');
 echo $this->Form->hidden('email');
