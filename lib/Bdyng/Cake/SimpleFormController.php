@@ -33,30 +33,31 @@ abstract class SimpleFormController extends AppController {
 //        $this->set('hello_form', $hello_form);
 
         $form = $this->createForm();
+        $this->set('form', $form);
     }
 
-    public function prepareForm($context, $form) {
+    public function prepareForm($form) {
 
     }
-    public function initForm($context, $form) {
+    public function initForm($form) {
 
     }
-    public function prepare($context, $form) {
+    public function prepare($form) {
 
     }
-    public function prepareInput($context, $form) {
+    public function prepareInput($form) {
 
     }
-    public function input($context, $form) {
+    public function input($form) {
 
     }
-    public function prepareConfirm($context, $form) {
+    public function prepareConfirm($form) {
 
     }
-    public function confirm($context, $form) {
+    public function confirm($form) {
 
     }
-    public function register($context, $form) {
+    public function register($form) {
 
     }
 
