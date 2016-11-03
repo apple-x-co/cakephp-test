@@ -5,11 +5,11 @@
  * Date: 2016/11/01
  * Time: 8:16
  */
-namespace TEAW;
+namespace Bdyng\Cake;
 
 use App\Controller;
 
-abstract class SimpleFormController extends  AppController {
+abstract class SimpleFormController extends AppController {
 
     public $form = null;
 

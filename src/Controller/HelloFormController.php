@@ -6,11 +6,12 @@
  * Time: 7:25
  */
 
-namespace TEAW;
+namespace App\Controller;
 
+use Bdyng\Cake;
 use App\Form\HelloForm;
 
-class HelloFormController extends  SimpleFormController {
+class HelloFormController extends SimpleFormController {
 
     public function createForm() {
         return new HelloForm();
