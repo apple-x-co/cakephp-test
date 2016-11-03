@@ -82,6 +82,7 @@ abstract class SimpleFormController extends AppController {
                     return;
                 }
                 $this->render(self::TEMPLATE_COMPLETE);
+                return;
                 //$this->redirect(array('action' => self::MODE_REGISTER));
             }
         }
