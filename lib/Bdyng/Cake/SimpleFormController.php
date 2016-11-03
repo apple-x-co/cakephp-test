@@ -15,7 +15,7 @@ abstract class SimpleFormController extends AppController {
     const MODE_CONFIRM = 'confirm';
     const MODE_REGISTER = 'register';
     const TEMPLATE_INPUT = 'input';
-    const TEMPLATE_CONFIRM = 'comfirm';
+    const TEMPLATE_CONFIRM = 'confirm';
     const TEMPLATE_COMPLETE = 'complete';
     const RETURN_CONTINUE = '__continue';
 
