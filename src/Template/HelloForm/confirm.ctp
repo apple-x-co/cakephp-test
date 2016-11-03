@@ -1,5 +1,7 @@
 <?php
 
+print_r($this->Form);
+
 echo $this->Form->create($form);
 echo '名前：' . $this->request->data['name'];
 echo 'メール：' . $this->request->data['email'];
