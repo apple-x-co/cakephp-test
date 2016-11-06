@@ -25,7 +25,7 @@ class HelloFormController extends SimpleFormController {
     {
         $email = new Email('default');
         $email->from(['heroku.x.co@gmail.com' => 'CakePHP TEST'])
-            ->to('apple.x.co@gmail.com  ')
+            ->to('apple.x.co@gmail.com')
             ->subject('Hello Form')
             ->send('Hello !!');
 
