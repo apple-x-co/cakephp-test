@@ -28,6 +28,8 @@ class HelloFormController extends SimpleFormController {
             ->to('apple.x.co@gmail.com  ')
             ->subject('Hello Form')
             ->send('Hello !!');
+
+        return $this::RETURN_CONTINUE;
     }
 
 }
