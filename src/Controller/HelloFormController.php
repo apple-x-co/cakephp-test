@@ -23,11 +23,11 @@ class HelloFormController extends SimpleFormController {
 
     public function register($form)
     {
-        $email = new Email('default');
-        $email->from(['heroku.x.co@gmail.com' => 'CakePHP TEST'])
-            ->to('apple.x.co@gmail.com')
-            ->subject('Hello Form')
-            ->send('Hello !!');
+//        $email = new Email('default');
+//        $email->from(['heroku.x.co@gmail.com' => 'CakePHP TEST'])
+//            ->to('apple.x.co@gmail.com')
+//            ->subject('Hello Form')
+//            ->send('Hello !!');
 
         return $this::RETURN_CONTINUE;
     }
