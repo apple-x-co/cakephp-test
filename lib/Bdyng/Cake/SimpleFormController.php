@@ -28,19 +28,19 @@ abstract class SimpleFormController extends AppController {
         $mode = $this->request->param('__mode');
         if (!array_key_exists('__mode', $this->request->data)) {
             if (array_key_exists('__confirm', $this->request->data)) {
-                $mode = self::MODE_CONFIRM;
+                $mode = static::MODE_CONFIRM;
             }
             elseif (array_key_exists('__register', $this->request->data)) {
-                $mode = self::MODE_REGISTER;
+                $mode = static::MODE_REGISTER;
             }
             else {
-                $mode = self::MODE_INPUT;
+                $mode = static::MODE_INPUT;
             }
         }
-        elseif ($mode !== self::MODE_INPUT &&
-                $mode !== self::MODE_CONFIRM &&
-                $mode !== self::MODE_REGISTER) {
-            $mode = self::MODE_INPUT;
+        elseif ($mode !== static::MODE_INPUT &&
+                $mode !== static::MODE_CONFIRM &&
+                $mode !== static::MODE_REGISTER) {
+            $mode = static::MODE_INPUT;
         }
 
         $form = $this->createForm();
@@ -50,15 +50,15 @@ abstract class SimpleFormController extends AppController {
         $this->set($form_name, $form);
 
         $return_val = $this->prepare($form);
-        if ($return_val !== self::RETURN_CONTINUE) {
+        if ($return_val !== static::RETURN_CONTINUE) {
             $this->render($return_val);
             return;
         }
 
-        if ($mode === self::MODE_CONFIRM ||
-            $mode === self::MODE_REGISTER) {
+        if ($mode === static::MODE_CONFIRM ||
+            $mode === static::MODE_REGISTER) {
             $return_val = $this->verifyRequestContext($form);
-            if ($return_val !== self::RETURN_CONTINUE) {
+            if ($return_val !== static::RETURN_CONTINUE) {
                 $this->render($return_val);
                 return;
             }
@@ -66,18 +66,18 @@ abstract class SimpleFormController extends AppController {
             if ($form->execute($this->request->data) &&
                 $this->validate($form)) {
 
-                if ($mode === self::MODE_CONFIRM) {
+                if ($mode === static::MODE_CONFIRM) {
                     $return_val = $this->prepareConfirm($form);
-                    if ($return_val !== self::RETURN_CONTINUE) {
+                    if ($return_val !== static::RETURN_CONTINUE) {
                         $this->render($return_val);
                         return;
                     }
-                    $this->render(self::TEMPLATE_CONFIRM);
+                    $this->render(static::TEMPLATE_CONFIRM);
                     return;
                 }
 
                 $return_val = $this->register($form);
-                if ($return_val !== self::RETURN_CONTINUE) {
+                if ($return_val !== static::RETURN_CONTINUE) {
                     $this->render($return_val);
                     return;
                 }
@@ -85,22 +85,22 @@ abstract class SimpleFormController extends AppController {
                 return;
             }
         }
-        elseif ($mode === self::MODE_INPUT &&
+        elseif ($mode === static::MODE_INPUT &&
                 $this->request->is('get')) {
             $return_val = $this->initForm($form);
-            if ($return_val !== self::RETURN_CONTINUE) {
+            if ($return_val !== static::RETURN_CONTINUE) {
                 $this->render($return_val);
                 return;
             }
         }
 
         $return_val = $this->prepareInput($form);
-        if ($return_val !== self::RETURN_CONTINUE) {
+        if ($return_val !== static::RETURN_CONTINUE) {
             $this->render($return_val);
             return;
         }
 
-        $this->render(self::TEMPLATE_INPUT);
+        $this->render(static::TEMPLATE_INPUT);
     }
 
     public function getFormName() {
